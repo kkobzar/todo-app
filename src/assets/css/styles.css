@@ -124,3 +124,58 @@ form input{
     cursor: pointer;
     font-size: 1.2em;
 }
+/* --- item edit input focus animation ---*/
+.separator {
+    height: 2px;
+    width: 100%;
+    background: #32C145;
+    display: block;
+    -webkit-transform: scaleX(0) translateY(-2px);
+    transform: scaleX(0) translateY(-2px);
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    opacity: 0;
+    -webkit-transition: all 0.15s linear;
+    transition: all 0.15s linear;
+}
+
+.edit-item:focus + .separator{
+    -webkit-transform: scaleX(1) translateY(-2px);
+    transform: scaleX(1) translateY(-2px);
+    opacity: 1;
+}
+.edit-item-box{
+    overflow: hidden;
+}
+.task-descr{
+    width: 100%;
+    font-size: .9em;
+    padding: 0 0 0 20px;
+    margin-bottom: 10px;
+    color: rgba(97, 93, 108, 0.8);
+}
+.subtask-item{
+    display: flex;
+    padding: 5px 20px;
+}
+.edit-todo,.delete-todo{
+    color: #615d6c;
+    font-size: 1rem;
+    display: none;
+    margin-left: auto;
+    transition: .1s;
+}
+.todo-list.edit .delete-todo, .todo-list.edit .edit-item{
+    display: block;
+}
+.todo-list.edit .edit-todo, .edit-item,.todo-list.edit .task-text{
+    display: none;
+}
+.todo-list:not(.edit):hover .edit-todo{
+    display: block;
+}
+.edit-item, .new-subtask-input{
+    border: none;
+    border-bottom: 2px solid #615d6c;
+    padding: 0 5px;
+}

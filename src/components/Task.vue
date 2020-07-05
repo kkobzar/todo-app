@@ -3,7 +3,10 @@
         <div class="checkbox" @click.prevent="toggleToDo(item, index)" :class="{active:item.isChecked ==='true'}" :data-index="index">
             <img src="../assets/img/icon-checkmark.svg" alt=""></div>
         <label class="task-text">{{item.todo_text}}</label>
-        <input class="edit-item" @change="editTask(index,item)" type="text" :data-index="index" :value="item.todo_text">
+        <div class="edit-item-box">
+            <input class="edit-item" @change="editTask(index,item)" type="text" :data-index="index" :value="item.todo_text">
+            <span class="separator"></span>
+        </div>
         <button class="delete-todo" @click.prevent="deleteToDo(index)"><i class="fas fa-times"></i></button>
         <button class="edit-todo" @click.prevent="editToDo(index)"><i class="far fa-edit"></i></button>
         <div v-if=" typeof item.todo_descr !== 'undefined'" class="task-descr">{{item.todo_descr}}</div>
