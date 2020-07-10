@@ -3,7 +3,7 @@
         <img src="../assets/img/logo.svg" alt="Logo">
         <div style="margin-right: 20px;" >
             <a v-if="this.$root.isLogged" class="logout-btn" @click.prevent="logout" href="#">
-                <img src="../assets/img/logout.svg" alt="Logout">
+                <i class="fas fa-sign-out-alt"></i>
             </a>
         </div>
     </div>
@@ -11,17 +11,30 @@
 
 <script>
     import firebase from "firebase";
+    import Swal from 'sweetalert2'
 
     export default {
         name: "Header",
         methods: {
             logout: async function () {
-                firebase.auth().signOut().then(function () {
-                    alert('Signed out')
-                }, function (error) {
-                    alert(error)
+                Swal.fire({
+                    title:'Are you sure?',
+                    showCancelButton: true,
+                    icon: 'question'
+                }).then((res)=>{
+                    if (res.isConfirmed){
+                        firebase.auth().signOut().then(function () {
+                            Swal.fire('Signed out','','success')
+                        }, function (error) {
+                            Swal.fire({
+                                title: error,
+                                icon: 'error',
+                            })
+                            alert(error)
+                        })
+                        this.$router.replace({name: "Login"})
+                    }
                 })
-                await this.$router.replace({name: "Login"})
             }
         },
     }
@@ -41,8 +54,9 @@
         -moz-box-shadow: 0px 0px 20px -7px #615D6C;
         box-shadow: 0px 0px 20px -7px rgba(97, 93, 108, 0.41);
     }
-    .logout-btn img{
-        height: 40px;
+    .logout-btn{
+        text-decoration: none;
+        font-size: 40px;
     }
 
     .header a {

@@ -4,6 +4,9 @@ a{
 a:hover{
     color: #2c3e50;
 }
+body{
+    font-family: "Nutino", sans-serif !important;
+}
 #login a:not(.btn),#registration a:not(.btn){
     text-transform: uppercase;
     text-decoration: none;

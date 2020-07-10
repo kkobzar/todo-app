@@ -80,9 +80,8 @@ document.onclick = function (e) {
 
 var changeTimer = false;
 
-$("input.edit-item").on("change",function(t){
+$("input.edit-item").on("change",function(){
   if(changeTimer !== false) clearTimeout(changeTimer);
-  console.log(t)
   changeTimer = setTimeout(function(){
     changeTimer = false;
   },300);

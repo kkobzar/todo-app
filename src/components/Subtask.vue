@@ -1,9 +1,10 @@
 <template>
     <div style="" class="subtasks">
-        <div class="new-subtask">
-            <label v-if="addedSubtask == true && $root.edit === index" >Add subtask: </label>
-            <input class="new-subtask-input" v-if="addedSubtask == true && $root.edit === index" @change="addSubTask(index)" type="text" :data-index="index">
-            <button v-if="addedSubtask == false && $root.edit === index" @click.prevent="toggleSubTask" type="submit"><i class="fas fa-plus-circle"></i></button>
+        <div class="new-subtask edit-item-box">
+            <label v-show="addedSubtask == true && $root.edit === index" >Add subtask: </label>
+            <input class="new-subtask-input" v-if="addedSubtask == true && $root.edit === index" @focusout="addSubTask(index)" type="text" :data-index="index">
+            <span v-show="addedSubtask == true && $root.edit === index" class="separator"></span>
+            <button v-show="addedSubtask == false && $root.edit === index" @click.prevent="toggleSubTask" type="submit"><i class="fas fa-plus-circle"></i></button>
         </div>
         <div v-for="(t,i) in item" class="subtask-box" :key="t.index">
             <div class="subtask-item" v-if="typeof t  === 'object'">
@@ -14,7 +15,7 @@
                     <input class="edit-item subtask" type="text" @change="editSubtask(index,i,t)" :data-index="i" :value="t.todo_text">
                     <span class="separator"></span>
                 </div>
-                <button class="delete-todo" @click.prevent="deleteSubtask(index, i,e)"><i class="fas fa-times"></i></button>
+                <button class="delete-todo" @click.prevent="deleteSubtask(index, i)"><i class="fas fa-times"></i></button>
             </div>
         </div>
     </div>
@@ -32,9 +33,15 @@
           }
         },
         methods:{
+            toggleSubTask: function(){
+                this.addedSubtask = !this.addedSubtask
+            },
             addSubTask: function(todo_index){
                 let val = this.$jQuery(`.new-subtask input.new-subtask-input[data-index="${todo_index}"]`).val().toLocaleString()
-
+                if (val === ''){
+                    this.addedSubtask = false;
+                    return
+                }
                 this.$jQuery(`.new-subtask input.new-subtask-input[data-index="${todo_index}"]`).val('')
                 console.log(val)
                 this.$database.child(`/users/${this.$root.user_id}/${todo_index}`).push().set({
@@ -83,5 +90,10 @@
 </script>
 
 <style scoped>
-
+.new-subtask button{
+    color: #32C145;
+}
+.new-subtask button:hover{
+    color: #9BFFA1;
+}    
 </style>
