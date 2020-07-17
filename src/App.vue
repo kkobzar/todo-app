@@ -22,7 +22,7 @@
     font-style: normal;
   }
 #app {
-  font-family:"Nutino", Avenir, Helvetica, Arial, sans-serif;
+  font-family:"Nutino", Avenir, Helvetica, Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -30,6 +30,11 @@
   background-color: #E9FBF1;
 }
 #app{
+  padding-top: 69px;
   min-height: 100vh;
 }
+  #app input {
+    font-family:"Nutino", Avenir, Helvetica, Arial, sans-serif !important;
+    color: #2c3e50;
+  }
 </style>

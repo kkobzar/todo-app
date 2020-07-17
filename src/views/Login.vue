@@ -8,6 +8,7 @@
                 <router-link v-if="email.toString() === ''" class="btn" to="/registration">Register</router-link>
                 <button :class="{w100: email.toString()}" class="btn" type="submit">Log in</button>
             </div>
+            <div class="socials" @click.prevent="loginWithGoogle"><i class="fab fa-google"></i></div>
         </form>
         <div><a @click.prevent="loginAnon" href="#">Continue without account</a></div>
     </div>
@@ -52,6 +53,14 @@
                         icon: 'error',
                     })
               })
+            },
+            loginWithGoogle: function (){
+                let provider = new firebase.auth.GoogleAuthProvider();
+                firebase.auth().signInWithPopup(provider).then((result) => {
+                    this.$router.replace({name: 'Home'})
+                    console.log(result)
+                    this.$root.updateToDo()
+                })
             },
             loginAnon: async function(){
                await firebase.auth().signInAnonymously()

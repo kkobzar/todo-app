@@ -2,7 +2,7 @@
     <div class="todo-list-body">
         <div class="checkbox" @click.prevent="toggleToDo(item, index)" :class="{active:item.isChecked ==='true'}" :data-index="index">
             <img src="../assets/img/icon-checkmark.svg" alt=""></div>
-        <label class="task-text">{{item.todo_text}}</label>
+        <div class="task-text">{{item.todo_text}}</div>
         <div class="edit-item-box">
             <input class="edit-item" @change="editTask(index,item)" type="text" :data-index="index" :value="item.todo_text">
             <span class="separator"></span>

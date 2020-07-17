@@ -53,6 +53,10 @@
         -webkit-box-shadow: 0px 0px 20px -7px #615D6C;
         -moz-box-shadow: 0px 0px 20px -7px #615D6C;
         box-shadow: 0px 0px 20px -7px rgba(97, 93, 108, 0.41);
+        top: 0;
+        left: 0;
+        right: 0;
+        position: fixed;
     }
     .logout-btn{
         text-decoration: none;

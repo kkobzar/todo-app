@@ -2,9 +2,9 @@
     <div style="" class="subtasks">
         <div class="new-subtask edit-item-box">
             <label v-show="addedSubtask == true && $root.edit === index" >Add subtask: </label>
-            <input class="new-subtask-input" v-if="addedSubtask == true && $root.edit === index" @focusout="addSubTask(index)" type="text" :data-index="index">
+            <input autofocus class="new-subtask-input" v-if="addedSubtask == true && $root.edit === index" @focusout="addSubTask(index)" type="text" :data-index="index">
             <span v-show="addedSubtask == true && $root.edit === index" class="separator"></span>
-            <button v-show="addedSubtask == false && $root.edit === index" @click.prevent="toggleSubTask" type="submit"><i class="fas fa-plus-circle"></i></button>
+            <button v-show="addedSubtask == false && $root.edit === index" @click.prevent="toggleSubTask" style="display: flex;margin: 0 auto; font-size: 1.5rem;" type="submit"><i class="fas fa-plus-circle"></i></button>
         </div>
         <div v-for="(t,i) in item" class="subtask-box" :key="t.index">
             <div class="subtask-item" v-if="typeof t  === 'object'">

@@ -1,4 +1,4 @@
-# todo-vue-app
+# todo-vue-app v1.0
 
 ###TODO
 TODO:
@@ -7,6 +7,7 @@ TODO:
 3. add description to todo items
 4. input 4 add task (open on edited todo item)
 5. animations and transitions
+6.mobile responsive
 
 ####editing item:
 input saves after finished typing +
